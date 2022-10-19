@@ -37,7 +37,7 @@ function addUserBtnClicked() {
     }
 
 	usersRef.push(newUser)
-    document.getElementsByClassName("registerForm").reset();
+    document.getElementById("registerForm").reset();
 }
 
 
