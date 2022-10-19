@@ -3,7 +3,7 @@
 const firebaseConfig = {
     apiKey: "AIzaSyB8srW_dVNdUN2q2jSKHFuv11zh2oGjntU",
     authDomain: "rememberdisco-73206.firebaseapp.com",
-    databaseURL: "https://rememberdisco-73206-default-rtdb.europe-west1.firebasedatabase.app",
+    databaseURL:"https://rememberdisco-73206-default-rtdb.europe-west1.firebasedatabase.app/",
     projectId: "rememberdisco-73206",
     storageBucket: "rememberdisco-73206.appspot.com",
     messagingSenderId: "276922566600",
