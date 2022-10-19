@@ -9,7 +9,7 @@ const firebaseConfig = {
   };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 
 document.getElementById('registerForm').addEventListener('submit', submitForm);
 
@@ -22,7 +22,19 @@ var birthDate = getInputVal('birthDate');
 var telephoneNo = getInputVal('telephoneNo');
 var email = getInputVal('email');
 
-saveMessage(name, surname, birthDate, telephoneNo, email);
+const writeToDatabase = (name, surname, birthDate, telephoneNo, email) => {
+    firebase
+      .database()
+      .ref("RemeberDB/" + Date.now())
+      .set({
+        name: name,
+        surname: surname,
+        birthDate: birthDate,
+        telephoneNo: telephoneNo,
+        email: email,
+      });
+  };
+//saveMessage(name, surname, birthDate, telephoneNo, email);
 
 document.getElementById('registerForm').reset();
 
@@ -42,4 +54,33 @@ function saveMessage(name, surname, birthDate, telephoneNo, email) {
         telephoneNo: telephoneNo,
         email: email,
     });
+}
+
+// --------------------------
+// ADD
+// --------------------------
+
+const addUserBtnUI = document.getElementById("add-user-btn");
+addUserBtnUI.addEventListener("click", addUserBtnClicked)
+
+function addUserBtnClicked() {
+
+	const usersRef = dbRef.child('users');
+
+	const addUserInputsUI = document.getElementsByClassName("user-input");
+
+ 	// this object will hold the new user information
+    let newUser = {};
+
+    // loop through View to get the data for the model 
+    for (let i = 0, len = addUserInputsUI.length; i < len; i++) {
+
+        let key = addUserInputsUI[i].getAttribute('data-key');
+        let value = addUserInputsUI[i].value;
+        newUser[key] = value;
+    }
+
+	usersRef.push(newUser)
+    
+   console.log(myPro)
 }

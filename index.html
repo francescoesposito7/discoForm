@@ -132,25 +132,25 @@
               <div class="contact_form-container">
                 <div>
                   <div>
-                    <input id="name" type="text" placeholder="Name">
+                    <input class='user-input' data-key="name" type="text" placeholder="Name">
                   </div>
                   <div>
-                    <input id="surname" type="text" placeholder="Cognome">
+                    <input class='user-input' data-key="surname" type="text" placeholder="Cognome">
                   </div>
                   <div>
-                    <input id="birthDate" type="text" placeholder="Data nascita">
+                    <input class='user-input' data-key="birthDate" type="text" placeholder="Data nascita">
                   </div>
                   <div>
-                    <input id="email" type="email" placeholder="Email">
+                    <input class='user-input' data-key="email" type="email" placeholder="Email">
                   </div>
                   <div>
-                    <input id="telephoneNo" type="text" placeholder="Telefono">
+                    <input class='user-input' data-key="telephoneNo" type="text" placeholder="Telefono">
                   </div>
                   <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
                       <div class="mt-4">
-                        <button type="submit">
+                        <button type='button' id="add-user-btn">
                           Register
                         </button>
                       </div>
@@ -235,11 +235,8 @@
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
   
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
-  <!-- TODO: Add SDKs for Firebase products that you want to use-->
-  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
-  <script type="text/javascript" src="js/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
 </body>
 
 </html>
