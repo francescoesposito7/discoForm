@@ -38,11 +38,7 @@ function readUserData() {
 			let $li = document.createElement("li");
 
 			$li.innerHTML = value.name;
-			$li.append(editIconUI);
-			$li.append(deleteIconUI);
-
 			$li.setAttribute("user-key", key);
-			$li.addEventListener("click", userClicked)
 			userListUI.append($li);
  		});
 	})
