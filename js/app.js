@@ -17,6 +17,7 @@ firebase.initializeApp(firebaseConfig);
 const dbRef = firebase.database().ref();
 const usersRef = dbRef.child('users');
 
+readUserData(); 
 
 // --------------------------
 // READ
@@ -37,11 +38,12 @@ function readUserData() {
 			let $li = document.createElement("li");
 
 			$li.innerHTML = value.name;
+			$li.append(editIconUI);
+			$li.append(deleteIconUI);
 
 			$li.setAttribute("user-key", key);
 			$li.addEventListener("click", userClicked)
 			userListUI.append($li);
-
  		});
 	})
 }
