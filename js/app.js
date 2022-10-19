@@ -16,39 +16,6 @@ firebase.initializeApp(firebaseConfig);
 // Firebase Database Reference and the child
 const dbRef = firebase.database().ref();
 const usersRef = dbRef.child('users');
-
-readUserData(); 
-
-// --------------------------
-// READ
-// --------------------------
-function readUserData() {
-
-	const userListUI = document.getElementById("user-list");
-
-	usersRef.on("value", snap => {
-
-		userListUI.innerHTML = ""
-
-		snap.forEach(childSnap => {
-
-			let key = childSnap.key,
-				value = childSnap.val()
-  			
-			let $li = document.createElement("li");
-
-			$li.innerHTML = value.name;
-			$li.setAttribute("user-key", key);
-			userListUI.append($li);
- 		});
-	})
-}
-
-
-// --------------------------
-// ADD
-// --------------------------
-
 const addUserBtnUI = document.getElementById("add-user-btn");
 addUserBtnUI.addEventListener("click", addUserBtnClicked)
 
