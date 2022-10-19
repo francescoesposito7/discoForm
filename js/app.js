@@ -72,28 +72,7 @@ function addUserBtnClicked() {
     }
 
 	usersRef.push(newUser)
-    
-   console.log(myPro)
-}
-
-function saveUserBtnClicked(e) {
- 
-	const userID = document.querySelector(".edit-userid").value;
-	const userRef = dbRef.child('users/' + userID);
-
-	var editedUserObject = {}
-
-	const editUserInputsUI = document.querySelectorAll(".edit-user-input");
-
-	editUserInputsUI.forEach(function(textField) {
-		let key = textField.getAttribute("data-key");
-		let value = textField.value;
-  		editedUserObject[textField.getAttribute("data-key")] = textField.value
-	});
-
-	userRef.update(editedUserObject);
-
-	document.getElementById('edit-user-module').style.display = "none";
+    document.getElementsByClassName("registerForm").reset();
 }
 
 
