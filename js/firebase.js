@@ -1,10 +1,3 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBsjHBJe9nfv8YBMaGbNu0tkmNKcGL-a_U",
   authDomain: "rememberdiscoparty.firebaseapp.com",
@@ -18,49 +11,35 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-const db = getDatabase(app);
-
 document.getElementById('registerForm').addEventListener('submit', submitForm);
 
-//var messagesRef = firebase.database().ref('RemeberDB');
+var messagesRef = firebase.database().ref('RemeberDB');
 
 // Get values
-//var name = getInputVal('name');
-//var surname = getInputVal('surname');
-//var birthDate = getInputVal('birthDate');
-//var telephoneNo = getInputVal('telephoneNo');
-//var email = getInputVal('email');
+var name = getInputVal('name');
+var surname = getInputVal('surname');
+var birthDate = getInputVal('birthDate');
+var telephoneNo = getInputVal('telephoneNo');
+var email = getInputVal('email');
 
-document.getElementById('registerForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    set(ref(db, 'users/' + Math.random().toString(36).slice(2, 7)), {
-        name: getInputVal('name'),
-        surname: getInputVal('surname'),
-        birthDate: getInputVal('birthDate'),
-        telephoneNo: getInputVal('telephoneNo'),
-        email: getInputVal('email')
-    });
 
-    document.getElementById('registerForm').reset();
-});
+saveMessage(name, surname, birthDate, telephoneNo, email);
+document.getElementById('registerForm').reset();
 
-//saveMessage(name, surname, birthDate, telephoneNo, email);
-//document.getElementById('registerForm').reset();
-//
-//
-//// Function to get get form values
-//function getInputVal(id) {
-//    return document.getElementById(id).value;
-//}
+
+// Function to get get form values
+function getInputVal(id) {
+    return document.getElementById(id).value;
+}
 
 // Save message to firebase
-//function saveMessage(name, surname, birthDate, telephoneNo, email) {
-//    var newMessageRef = messagesRef.push();
-//    newMessageRef.set({
-//        name: name,
-//        surname: surname,
-//        birthDate: birthDate,
-//        telephoneNo: telephoneNo,
-//        email: email,
-//    });
-//}
+function saveMessage(name, surname, birthDate, telephoneNo, email) {
+    var newMessageRef = messagesRef.push();
+    newMessageRef.set({
+        name: name,
+        surname: surname,
+        birthDate: birthDate,
+        telephoneNo: telephoneNo,
+        email: email,
+    });
+}
