@@ -674,10 +674,11 @@ a:focus {
 }
 
 .contact_section .contact_form-container input {
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #fff;
-  width: 90%;
+  font-weight: 200;
+  font-size: 14px;
+  width: 100%;
+  border-radius: 2.5px;
+  border: 1px solid #fff;
   margin: 15px 0;
   background-color: transparent;
 }
@@ -708,16 +709,12 @@ a:focus {
 
 .contact_section .contact_form-container button {
   border: none;
-  background-color: #0e35f6;
-  color: #fff;
+  background-color: #fff;
+  color: rgb(0, 0, 0);
   font-size: 15px;
   padding: 15px 55px;
   border-radius: 30px;
   text-transform: uppercase;
-}
-
-.contact_section .contact_form-container button:hover {
-  background-color: #082de2;
 }
 
 .contact_section .map-box #map {
