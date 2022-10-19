@@ -22,8 +22,8 @@ var birthDate = getInputVal('birthDate');
 var telephoneNo = getInputVal('telephoneNo');
 var email = getInputVal('email');
 
-
 saveMessage(name, surname, birthDate, telephoneNo, email);
+
 document.getElementById('registerForm').reset();
 
 
