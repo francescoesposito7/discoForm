@@ -48,9 +48,7 @@
             <span class="sr-only">Next</span>
           </a>
           <h1>
-            REMEMBER <br>
-            DISCO <br>
-            PARTY
+            REMEMBER
           </h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
@@ -99,11 +97,7 @@
 
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="img-box">
-            <img src="images/about-img.png" alt="">
-          </div>
-        </div>
+        
       </div>
 
     </div>
@@ -128,36 +122,28 @@
       <div class="layout_padding-top layout_padding2-bottom">
         <div class="row">
           <div class="col-md-12">
-            <form id="registerForm">
+            <form id="registerForm" data-toggle="modal">
+              
               <div class="contact_form-container">
-                <div>
+                
                   <div>
-                    <input class='user-input' data-key="name" type="text" placeholder="Name">
-                  </div>
-                  <div>
-                    <input class='user-input' data-key="surname" type="text" placeholder="Cognome">
+                    <input class='user-input' data-key="name" name="name" id="name" type="text" placeholder="Nome" autocomplete="off" required>
                   </div>
                   <div>
-                    <input class='user-input' data-key="birthDate" type="text" placeholder="Data nascita">
+                    <input class='user-input' data-key="surname" name="surname" id="surname" type="text" placeholder="Cognome" autocomplete="off" required>
                   </div>
                   <div>
-                    <input class='user-input' data-key="email" type="email" placeholder="Email">
+                    <input placeholder="Data nascita" data-key="birthDate" class="textbox-n" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" required/>
                   </div>
                   <div>
-                    <input class='user-input' data-key="telephoneNo" type="text" placeholder="Telefono">
+                    <input class='user-input' data-key="email" name="email" id="email" type="email" placeholder="Email" autocomplete="off" required>
                   </div>
-                  <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                      <div class="mt-4">
-                        <button type='button' id="add-user-btn">
-                          Register
-                        </button>
-                      </div>
-                    </div>
-                    <div class="col-md-4"></div>
+                  <div>
+                    <input class='user-input' data-key="telephoneNo" name="telephoneNo" id="telephoneNo" type="tel" placeholder="Telefono" autocomplete="off" pattern="+[0-9]{2} [0-9]{3} [0-9]{7}" required>
                   </div>
-                </div>
+                  <div class="mt-4">
+                    <button type="submit" value="Sign Up" class="open-modal" data-open="modal1">Sign Up</button>
+                  </div>
               </div>
             </form>
           </div>
