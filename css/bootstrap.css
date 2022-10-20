@@ -1515,7 +1515,10 @@ pre code {
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #212529;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  color: #fff;
+  
 }
 
 .table th,
@@ -1561,11 +1564,11 @@ pre code {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(133, 132, 132, 0.392);
 }
 
 .table-hover tbody tr:hover {
-  color: #212529;
+  color: #dfc922;
   background-color: rgba(0, 0, 0, 0.075);
 }
 

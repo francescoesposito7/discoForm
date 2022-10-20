@@ -24,24 +24,36 @@
     <link href="css/responsive.css" rel="stylesheet" />
   </head>
   <body>
-
-    <h3>Lista Invitati Registrati</h3>
-
-    <table class="table table-striped" id="usersTable">
-      <thead>
-        <tr id="tr">
-          <th>Nome</th>
-          <th>Cognome</th> 
-          <th>Email</th>
-          <th>No Tel:</th>
-          <th>Data di Nascita</th>
-        </tr>
-      </thead>
-      <tbody>
-    	</body>
-    </table> 
-
-
+    <div class="container">
+          <div class="custom_heading-container">
+              <h2>
+                Lista Registrati
+              </h2>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <table class="table table-striped" id="usersTable">
+          <thead>
+            <tr id="tr">
+              <th>Data di Nascita</th>
+              <th>Email</th>
+              <th>Nome</th>
+              <th>Cognome</th> 
+              <th>No Tel:</th>
+            </tr>
+          </thead>
+          <tbody>
+          </body>
+        </table> 
+      </div>
+      <div class="col-md-1"></div>
+      
+    </div>
+      
+  
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase.js"></script>
     <script type="text/javascript" src="js/readUsers.js"></script>
   </body>
