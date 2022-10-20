@@ -1,4 +1,3 @@
-
 // Initialize Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyB8srW_dVNdUN2q2jSKHFuv11zh2oGjntU",
@@ -9,7 +8,6 @@ const firebaseConfig = {
     messagingSenderId: "276922566600",
     appId: "1:276922566600:web:5961dae5577f4f319ca2fd"
   };
-
 
 firebase.initializeApp(firebaseConfig);
 
@@ -40,12 +38,3 @@ function addUserBtnClicked() {
     document.getElementById("registerForm").reset();
 
 }
-
-
-
-
-
-        
-
-
-
