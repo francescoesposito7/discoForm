@@ -16,21 +16,15 @@ firebase.initializeApp(firebaseConfig);
 const dbRef = firebase.database().ref();
 const usersRef = dbRef.child('users');
 
-usersRef.once('value', function(snapshot){
-	if(snapshot.exists()){
-		var content = '';
-		snapshot.forEach(function(data){
-			var val = data.val();
-			content +='<tr>';
-			content += '<td>' + val.descripcion + '</td>';
-			content += '<td>' + val.direccion + '</td>';
-			content += '<td>' + val.estado + '</td>';
-			content += '<td>' + val.imagen + '</td>';
-			content += '<td>' + val.tipo + '</td>';
-			content += '<td>' + val.udisplayName + '</td>';
-			content += '<td>' + val.uemail + '</td>';
-			content += '</tr>';
-		});
-		$('#ex-table').append(content);
+var table = document.querySelector('#usersTable tbody');
+usersRef.on('value', snap => {
+	var users = snap.val();
+	for(var i in users) {
+	 var row = table.insertRow(-1);
+		for(var j in users[i]) {				
+			cell = row.insertCell(-1);				
+			cell.innerHTML = users[i][j];			
+		}
 	}
-})
+});
+
