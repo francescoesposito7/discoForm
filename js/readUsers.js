@@ -16,26 +16,21 @@ firebase.initializeApp(firebaseConfig);
 const dbRef = firebase.database().ref();
 const usersRef = dbRef.child('users');
 
-readUserData(); 
-
-function readUserData() {
-
-	const userListUI = document.getElementById("user-list");
-
-	usersRef.on("value", snap => {
-
-		userListUI.innerHTML = ""
-
-		snap.forEach(childSnap => {
-
-			let key = childSnap.key,
-				value = childSnap.val()
-  			
-			let $li = document.createElement("li");
-
-			$li.innerHTML = value.name;
-			$li.setAttribute("user-key", key);
-			userListUI.append($li);
- 		});
-	})
-}
+usersRef.once('value', function(snapshot){
+	if(snapshot.exists()){
+		var content = '';
+		snapshot.forEach(function(data){
+			var val = data.val();
+			content +='<tr>';
+			content += '<td>' + val.descripcion + '</td>';
+			content += '<td>' + val.direccion + '</td>';
+			content += '<td>' + val.estado + '</td>';
+			content += '<td>' + val.imagen + '</td>';
+			content += '<td>' + val.tipo + '</td>';
+			content += '<td>' + val.udisplayName + '</td>';
+			content += '<td>' + val.uemail + '</td>';
+			content += '</tr>';
+		});
+		$('#ex-table').append(content);
+	}
+})
