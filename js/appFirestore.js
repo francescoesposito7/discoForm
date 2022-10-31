@@ -8,7 +8,7 @@
     messagingSenderId: "232836695865",
     appId: "1:232836695865:web:21f7c8ba162d1b94d84ae8"
   };
-  
+
 firebase.initializeApp(firebaseConfig);
 const addUserBtnUI = document.getElementById("add-user-btn");
 addUserBtnUI.addEventListener("click", addUserBtnClicked)
