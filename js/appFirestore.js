@@ -9,27 +9,27 @@ const firebaseConfig = {
   };
 
 firebase.initializeApp(firebaseConfig);
+
+
+
+
   const addUserBtnUI = document.getElementById("add-user-btn");
   addUserBtnUI.addEventListener("click", addUserBtnClicked)
 
 
 function addUserBtnClicked() {
-    const addUserInputsUI = document.getElementsByClassName("user-input");
-    // this object will hold the new user information
-    let newUser = {};
-
-    // loop through View to get the data for the model 
-    for (let i = 0, len = addUserInputsUI.length; i < len; i++) {
-
-        let key = addUserInputsUI[i].getAttribute('data-key');
-        let value = addUserInputsUI[i].value;
-        newUser[key] = value;
-    }
+    const form = document.querySelector("#registerForm");
 
     firebase
     .firestore()
     .collection("users")
-    .add({newUser});
+    .add({
+        name: form.name.value,
+        surname: form.surname.value,
+        birthDate: form.birthDate.value,
+        email: form.email.value,
+        telephoneNo: form.telephoneNo.value,
+    });
     document.getElementById("registerForm").reset();
 }
   
