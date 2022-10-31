@@ -1,14 +1,12 @@
-// Initialize Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyDU0OLWd0h5X6kYaVLHNXTg4Z4ZSfWaydw",
-  authDomain: "rememberparty-f2451.firebaseapp.com",
-  projectId: "rememberparty-f2451",
-  databaseURL:"https://rememberparty-f2451-default-rtdb.europe-west1.firebasedatabase.app/",
-  storageBucket: "rememberparty-f2451.appspot.com",
-  messagingSenderId: "317422815123",
-  appId: "1:317422815123:web:0f466c49d3e02569c24a66",
-  measurementId: "G-06560FB3N9"
-};
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAz-Mr9afhvilZF2S80OR7I0az7_OAesGE",
+    authDomain: "rememberparty-704ab.firebaseapp.com",
+    projectId: "rememberparty-704ab",
+    storageBucket: "rememberparty-704ab.appspot.com",
+    messagingSenderId: "232836695865",
+    appId: "1:232836695865:web:21f7c8ba162d1b94d84ae8"
+  };
 
 firebase.initializeApp(firebaseConfig);
 
