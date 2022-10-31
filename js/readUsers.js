@@ -1,13 +1,13 @@
 // Initialize Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyB8srW_dVNdUN2q2jSKHFuv11zh2oGjntU",
-    authDomain: "rememberdisco-73206.firebaseapp.com",
-    databaseURL:"https://rememberdisco-73206-default-rtdb.europe-west1.firebasedatabase.app/",
-    projectId: "rememberdisco-73206",
-    storageBucket: "rememberdisco-73206.appspot.com",
-    messagingSenderId: "276922566600",
-    appId: "1:276922566600:web:5961dae5577f4f319ca2fd"
-  };
+  apiKey: "AIzaSyDU0OLWd0h5X6kYaVLHNXTg4Z4ZSfWaydw",
+  authDomain: "rememberparty-f2451.firebaseapp.com",
+  projectId: "rememberparty-f2451",
+  storageBucket: "rememberparty-f2451.appspot.com",
+  messagingSenderId: "317422815123",
+  appId: "1:317422815123:web:0f466c49d3e02569c24a66",
+  measurementId: "G-06560FB3N9"
+};
 
 
 firebase.initializeApp(firebaseConfig);
@@ -15,12 +15,13 @@ firebase.initializeApp(firebaseConfig);
 const usersRef = firebase
   .firestore()
   .collection("users");
-
+let tot = 0;
   usersRef
   .get()
   .then(querySnapshot=>{
     querySnapshot.forEach(doc=>{
         let data = doc.data();
+        tot+=1;
         let row  = `<tr>
                         <td>${data.newUser.birthDate}</td>
                         <td>${data.newUser.email}</td>
@@ -30,6 +31,7 @@ const usersRef = firebase
                   </tr>`;
         let table = document.querySelector('#usersTable tbody');
         table.innerHTML += row
+        document.getElementById("tot").innerHTML = tot;
     })
 })
 .catch(err=>{
