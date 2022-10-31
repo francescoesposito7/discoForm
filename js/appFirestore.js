@@ -9,13 +9,8 @@ const firebaseConfig = {
   };
 
 firebase.initializeApp(firebaseConfig);
-
-
-
-
-  const addUserBtnUI = document.getElementById("add-user-btn");
-  addUserBtnUI.addEventListener("click", addUserBtnClicked)
-
+const addUserBtnUI = document.getElementById("add-user-btn");
+addUserBtnUI.addEventListener("click", addUserBtnClicked)
 
 function addUserBtnClicked() {
     const form = document.querySelector("#registerForm");

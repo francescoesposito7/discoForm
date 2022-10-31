@@ -22,11 +22,11 @@ const usersRef = firebase
     querySnapshot.forEach(doc=>{
         let data = doc.data();
         let row  = `<tr>
-                        <td>${data.birthDate}</td>
-                        <td>${data.email}</td>
-                        <td>${data.name}</td>
-                        <td>${data.surname}</td>
-                        <td>${data.telephoneNo}</td>
+                        <td>${data.newUser.birthDate}</td>
+                        <td>${data.newUser.email}</td>
+                        <td>${data.newUser.name}</td>
+                        <td>${data.newUser.surname}</td>
+                        <td>${data.newUser.telephoneNo}</td>
                   </tr>`;
         let table = document.querySelector('#usersTable tbody');
         table.innerHTML += row
