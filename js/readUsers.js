@@ -12,19 +12,27 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-// Firebase Database Reference and the child
-const dbRef = firebase.database().ref();
-const usersRef = dbRef.child('users');
+const usersRef = firebase
+  .firestore()
+  .collection("users");
 
-var table = document.querySelector('#usersTable tbody');
-usersRef.on('value', snap => {
-	var users = snap.val();
-	for(var i in users) {
-	 var row = table.insertRow(-1);
-		for(var j in users[i]) {				
-			cell = row.insertCell(-1);				
-			cell.innerHTML = users[i][j];			
-		}
-	}
+  usersRef
+  .get()
+  .then(querySnapshot=>{
+    querySnapshot.forEach(doc=>{
+        let data = doc.data();
+        let row  = `<tr>
+                        <td>${data.birthDate}</td>
+                        <td>${data.email}</td>
+                        <td>${data.name}</td>
+                        <td>${data.surname}</td>
+                        <td>${data.telephoneNo}</td>
+                  </tr>`;
+        let table = document.querySelector('#usersTable tbody');
+        table.innerHTML += row
+    })
+})
+.catch(err=>{
+    console.log(`Error: ${err}`)
 });
-
+  
