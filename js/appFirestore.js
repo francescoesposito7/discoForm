@@ -15,21 +15,21 @@ firebase.initializeApp(firebaseConfig);
 
 function addUserBtnClicked() {
     const addUserInputsUI = document.getElementsByClassName("user-input");
-    let name = document.getElementById("name");
-    let surname = document.getElementById("surname");
-    let email = document.getElementById("email");
-    let date = document.getElementById("date");
-    let telephoneNo = document.getElementById("telephoneNo");
-    console.log( name + surname + email + date + telephoneNo)
+    // this object will hold the new user information
+    let newUser = {};
+
+    // loop through View to get the data for the model 
+    for (let i = 0, len = addUserInputsUI.length; i < len; i++) {
+
+        let key = addUserInputsUI[i].getAttribute('data-key');
+        let value = addUserInputsUI[i].value;
+        newUser[key] = value;
+    }
+
     firebase
     .firestore()
     .collection("users")
-    .add({
-        name: name,
-        surname: surname,
-        email: email,
-        birthDate: date,
-        telephoneNo: telephoneNo,
-    });
+    .add({newUser});
+    document.getElementById("registerForm").reset();
 }
   
