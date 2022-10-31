@@ -30,6 +30,5 @@ function addUserBtnClicked() {
         email: form.email.value,
         telephoneNo: form.telephoneNo.value,
     });
-    document.getElementById("registerForm").reset();
 }
   
