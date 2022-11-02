@@ -15,21 +15,30 @@ var firestore = firebase.firestore();
 const db = firestore.collection("users");
 
 const addUserBtnUI = document.getElementById("add-user-btn");
-addUserBtnUI.addEventListener("click", addUserBtnClicked)
+addUserBtnUI.addEventListener("click", (e) => {
+  //Prevent Default Form Submission Behavior
+  e.preventDefault();
 
-function addUserBtnClicked() {
-    db
-    .doc()
-    .set({
-      name: document.getElementById("name").value,
-      surnname: document.getElementById("surname").value,
-      email: document.getElementById("email").value,
-      birthDate: document.getElementById("date").value,
-      telephoneNo: document.getElementById("telephoneNo").value,
-    })
-    .then(() => { })
-    .catch((error) => {
-      console.log(error);
-    });
-}
+  //Get Form Values
+  let firstName = document.getElementById("name").value;
+  let lastName = document.getElementById("surname").value;
+  let email = document.getElementById("email").value;
+  let date = document.getElementById("date").value;
+  let telephoneNo = document.getElementById("telephoneNo").value;
+
+  db
+  .doc()
+  .set({
+    name: firstName,
+    surnname: lastName,
+    email: email,
+    birthDate: date,
+    telephoneNo: telephoneNo,
+  })
+  .then(() => { })
+  .catch((error) => {
+    console.log(error);
+  });
+})
+
   
