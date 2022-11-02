@@ -1,13 +1,12 @@
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyB8srW_dVNdUN2q2jSKHFuv11zh2oGjntU",
-    authDomain: "rememberdisco-73206.firebaseapp.com",
-    databaseURL: "https://rememberdisco-73206-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "rememberdisco-73206",
-    storageBucket: "rememberdisco-73206.appspot.com",
-    messagingSenderId: "276922566600",
-    appId: "1:276922566600:web:5961dae5577f4f319ca2fd"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyAz-Mr9afhvilZF2S80OR7I0az7_OAesGE",
+  authDomain: "rememberparty-704ab.firebaseapp.com",
+  databaseURL: "https://rememberparty-704ab-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "rememberparty-704ab",
+  storageBucket: "rememberparty-704ab.appspot.com",
+  messagingSenderId: "232836695865",
+  appId: "1:232836695865:web:21f7c8ba162d1b94d84ae8"
+};
   
 firebase.initializeApp(firebaseConfig);
 
