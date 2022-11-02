@@ -24,10 +24,10 @@ function addUserBtnClicked() {
         let value = addUserInputsUI[i].value;
         newUser[key] = value;
     }
-
+    
     firebase
     .firestore()
     .collection("users")
-    .add({newUser});
+    .addDoc({newUser});
 }
   
