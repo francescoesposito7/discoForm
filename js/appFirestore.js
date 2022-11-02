@@ -10,6 +10,11 @@
   };
 
 firebase.initializeApp(firebaseConfig);
+var firestore = firebase.firestore();
+
+//Variable to access database collection
+const db = firestore.collection("users");
+
 const addUserBtnUI = document.getElementById("add-user-btn");
 addUserBtnUI.addEventListener("click", addUserBtnClicked)
 
@@ -25,9 +30,13 @@ function addUserBtnClicked() {
         newUser[key] = value;
     }
     
-    firebase
-    .firestore()
-    .collection("users")
-    .addDoc({newUser});
+    db.doc()
+    .set({
+      newUser
+    })
+    .then(() => { })
+    .catch((error) => {
+      console.log(error);
+    });
 }
   
