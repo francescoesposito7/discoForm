@@ -1,12 +1,12 @@
   // Your web app's Firebase configuration
   const firebaseConfig = {
-    apiKey: "AIzaSyAz-Mr9afhvilZF2S80OR7I0az7_OAesGE",
-    authDomain: "rememberparty-704ab.firebaseapp.com",
-    projectId: "rememberparty-704ab",
-    databaseURL:"https://rememberparty-704ab-default-rtdb.europe-west1.firebasedatabase.app/",
-    storageBucket: "rememberparty-704ab.appspot.com",
-    messagingSenderId: "232836695865",
-    appId: "1:232836695865:web:21f7c8ba162d1b94d84ae8"
+    apiKey: "AIzaSyB8srW_dVNdUN2q2jSKHFuv11zh2oGjntU",
+    authDomain: "rememberdisco-73206.firebaseapp.com",
+    databaseURL: "https://rememberdisco-73206-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "rememberdisco-73206",
+    storageBucket: "rememberdisco-73206.appspot.com",
+    messagingSenderId: "276922566600",
+    appId: "1:276922566600:web:5961dae5577f4f319ca2fd"
   };
 
 firebase.initializeApp(firebaseConfig);
@@ -22,11 +22,11 @@ let tot = 0;
         let data = doc.data();
         tot+=1;
         let row  = `<tr>
-                        <td>${data.birthDate}</td>
-                        <td>${data.email}</td>
-                        <td>${data.name}</td>
-                        <td>${data.surname}</td>
-                        <td>${data.telephoneNo}</td>
+                        <td>${data.newUser.birthDate}</td>
+                        <td>${data.newUser.email}</td>
+                        <td>${data.newUser.name}</td>
+                        <td>${data.newUser.surname}</td>
+                        <td>${data.newUser.telephoneNo}</td>
                   </tr>`;
         let table = document.querySelector('#usersTable tbody');
         table.innerHTML += row
