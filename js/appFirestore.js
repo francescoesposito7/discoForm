@@ -39,6 +39,8 @@ addUserBtnUI.addEventListener("click", (e) => {
   .catch((error) => {
     console.log(error);
   });
+
+  document.getElementById("registerForm").reset();
 })
 
   
