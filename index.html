@@ -122,28 +122,34 @@
       <div class="layout_padding-top layout_padding2-bottom">
         <div class="row">
           <div class="col-md-12">
-            <form id="registerForm" data-toggle="modal">
+            <form id="registerForm" name="modulo">
               <div class="contact_form-container">
                   <div>
-                    <input class='user-input' data-key="name" name="name" id="name" type="text" placeholder="Nome" autocomplete="off" required>
+                    <input name="name" id="name" type="text" placeholder="Nome" required>
                   </div>
                   <div>
-                    <input class='user-input' data-key="surname" name="surname" id="surname" type="text" placeholder="Cognome" autocomplete="off" required>
+                    <input name="surname" id="surname" type="text" placeholder="Cognome" required>
                   </div>
                   <div>
-                    <input class='user-input' data-key="birthDate" placeholder="Data nascita" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" required/>
+                    <input name="date" id="date" placeholder="Data nascita" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" required/>
                   </div>
                   <div>
-                    <input class='user-input' data-key="email" name="email" id="email" type="email" placeholder="Email" autocomplete="off" required>
+                    <input name="email" id="email" type="email" placeholder="Email" required>
                   </div>
                   <div>
-                    <input class='user-input' data-key="telephoneNo" name="telephoneNo" id="telephoneNo" type="tel" placeholder="Telefono" autocomplete="off" required>
+                    <input name="telephoneNo" id="telephoneNo" type="tel" placeholder="Telefono" required>
                   </div>
                   <div class="mt-4">
                     <button type="submit" value="Sign Up" id="add-user-btn">Sign Up</button>
                   </div>
               </div>
             </form>
+            <div id="confirm">
+              <p class="message"><br>Registrazione avvenuta con Successo. <br> 
+                A breve riceverai una mail di conferma. <br> 
+                <button class="yes">Chiudi</button>
+              </p>
+          </div>
           </div>
         </div>
       </div>

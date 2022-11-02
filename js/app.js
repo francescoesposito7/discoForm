@@ -18,7 +18,13 @@ const addUserBtnUI = document.getElementById("add-user-btn");
 addUserBtnUI.addEventListener("click", (e) => {
   //Prevent Default Form Submission Behavior
   e.preventDefault();
-
+  var email_reg_exp = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
+  
+  const modal = document.querySelector(".modal");
+  const overlay = document.querySelector(".overlay");
+  const openModalBtn = document.querySelector(".btn-open");
+  const closeModalBtn = document.querySelector(".btn-close");
+  
   //Get Form Values
   let firstName = document.getElementById("name").value;
   let lastName = document.getElementById("surname").value;
@@ -26,11 +32,43 @@ addUserBtnUI.addEventListener("click", (e) => {
   let date = document.getElementById("date").value;
   let telephoneNo = document.getElementById("telephoneNo").value;
 
+  if ((firstName == "") || (firstName == "undefined")) {
+    alert("Il campo Nome è obbligatorio.");
+    document.modulo.name.focus();
+    return false;
+  }
+    //Effettua il controllo sul campo COGNOME
+    else if ((lastName == "") || (lastName == "undefined")) {
+    alert("Il campo Cognome è obbligatorio.");
+    document.modulo.surname.focus();
+    return false;
+  }
+
+  if (document.modulo.date.value.substring(6,10) < 1900) {
+    alert("Impossibile utilizzare un valore inferiore a 1900 per l'anno");
+    document.modulo.date.value = "";
+    document.modulo.date.focus();
+    return false;
+  }
+
+  if (!email_reg_exp.test(email) || (email == "") || (email == "undefined")) {
+    alert("Inserire un indirizzo email corretto.");
+    document.modulo.email.select();
+    return false;
+  }
+
+  if ((isNaN(telephoneNo)) || (telephoneNo == "") || (telephoneNo == "undefined")) {
+    alert("Il campo Telefono è numerico ed obbligatorio.");
+    document.modulo.telephoneNo.value = "";
+    document.modulo.telephoneNo.focus();
+    return false;
+  }
+
   db
   .doc()
   .set({
     name: firstName,
-    surnname: lastName,
+    surname: lastName,
     email: email,
     birthDate: date,
     telephoneNo: telephoneNo,
@@ -41,6 +79,20 @@ addUserBtnUI.addEventListener("click", (e) => {
   });
 
   document.getElementById("registerForm").reset();
+  functionAlert();
 })
+
+function functionAlert(msg, myYes) {
+  var confirmBox = $("#confirm");
+  confirmBox.find(".message").text(msg);
+  confirmBox.find(".yes").unbind().click(function() {
+      confirmBox.hide();
+  });
+  confirmBox.find(".yes").click(myYes);
+  confirmBox.show();
+}
+
+
+
 
   
