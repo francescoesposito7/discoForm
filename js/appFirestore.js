@@ -18,13 +18,14 @@ const addUserBtnUI = document.getElementById("add-user-btn");
 addUserBtnUI.addEventListener("click", addUserBtnClicked)
 
 function addUserBtnClicked() {
-    db.doc()
+    db
+    .doc()
     .set({
-      name: "nome",
-      surnname: "nome",
-      email: "nome",
-      birthDate: "nome",
-      telephoneNo: "nome",
+      name: document.getElementById("name").value,
+      surnname: document.getElementById("surname").value,
+      email: document.getElementById("email").value,
+      birthDate: document.getElementById("date").value,
+      telephoneNo: document.getElementById("telephoneNo").value,
     })
     .then(() => { })
     .catch((error) => {
