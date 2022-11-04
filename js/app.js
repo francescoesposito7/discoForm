@@ -1,4 +1,4 @@
-firebase.initializeApp(env.firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
 
 //Variable to access database collection

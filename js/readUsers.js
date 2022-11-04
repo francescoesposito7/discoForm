@@ -1,4 +1,4 @@
-firebase.initializeApp(env.firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 const usersRef = firebase
   .firestore()
