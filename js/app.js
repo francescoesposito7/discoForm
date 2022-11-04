@@ -13,6 +13,7 @@ var firestore = firebase.firestore();
 
 //Variable to access database collection
 const db = firestore.collection("users");
+const mail = firestore.collection("mail");
 
 const addUserBtnUI = document.getElementById("add-user-btn");
 addUserBtnUI.addEventListener("click", (e) => {
@@ -77,6 +78,28 @@ addUserBtnUI.addEventListener("click", (e) => {
   .catch((error) => {
     console.log(error);
   });
+
+  var message = `<html>
+  <body>
+  <h1>REMEMBER PARTY</h1>
+  <p>Verrai inserita/o in una lista nominale all’ingresso del locale.Ti basterà quindi dimostrare la tua identità con un documento in corso di validità e contribuire alla riuscita della serata con una quota di <b>10€</b> da pagare in cassa.</p>
+  <p><b>Orario: 23:30 - 04:30</b><br><b>2011-2022</b></p>
+  <p>Rimani aggiornato, iscriviti al canale Telegram ufficiale: <b>https://t.me/provarem"</b></p>
+  <p>Per qualsiasi richiesta, puoi contattarci: <br></p>
+  <p>WhatsApp: <b>https://wa.me/393486380115</b> <br> Email: <b>remember.party01@gmail.com</b></p>
+  </body>
+  </html>`
+
+  mail
+  .add({
+    to: email,
+    message: {
+      subject: "Registrazione avvenuta con successo!",
+      text: "",
+      html: message
+    },
+  })
+  .then(() => console.log("Queued email for delivery!"));
 
   document.getElementById("registerForm").reset();
   functionAlert();
