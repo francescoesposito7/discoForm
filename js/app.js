@@ -1,3 +1,13 @@
+var firebaseConfig = {
+  apiKey: "AIzaSyAz-Mr9afhvilZF2S80OR7I0az7_OAesGE",
+  authDomain: "rememberparty-704ab.firebaseapp.com",
+  databaseURL: "https://rememberparty-704ab-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "rememberparty-704ab",
+  storageBucket: "rememberparty-704ab.appspot.com",
+  messagingSenderId: "232836695865",
+  appId: "1:232836695865:web:21f7c8ba162d1b94d84ae8"
+};
+
 firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
 
