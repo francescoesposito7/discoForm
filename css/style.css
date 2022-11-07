@@ -689,6 +689,11 @@ a:focus {
   padding: 0 10px;
 }
 
+input::-webkit-datetime-edit {
+  display: block;
+  padding: 0;
+}
+
 .contact_section .contact_form-container input:-ms-input-placeholder {
   color: #fff;
   font-size: 18px;
