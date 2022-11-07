@@ -297,7 +297,7 @@ input[type="month"] {
 
 input[type="date"] {
   -webkit-appearance: textfield;
-  min-height: 1.2em;
+  min-height: 2em;
 }
 
 textarea {
