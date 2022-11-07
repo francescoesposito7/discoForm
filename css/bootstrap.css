@@ -296,9 +296,11 @@ input[type="month"] {
 }
 
 input[type="date"] {
-  display: block;
+  display:block;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  min-height: 1.2em;
 }
-
 
 textarea {
   overflow: auto;
