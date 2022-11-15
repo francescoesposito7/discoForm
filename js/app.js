@@ -85,7 +85,7 @@ addUserBtnUI.addEventListener("click", (e) => {
   <p><strong>2011-2022</strong></p>
   <p>Verrai inserita/o in una lista nominale all&rsquo;ingresso del locale.Ti baster&agrave; quindi dimostrare la tua identit&agrave; con un documento in corso di validit&agrave; e contribuire alla riuscita della serata con una quota di <strong>10&euro;</strong> da pagare in cassa.</p>
   <p><strong>Orario: 23:30 - 04:30</strong></p>
-  <p>Rimani aggiornato, iscriviti al canale Telegram ufficiale: <strong>https://t.me/provarem"</strong></p>
+  <p>Rimani aggiornato, iscriviti al canale Telegram ufficiale: <strong>https://t.me/provarem</strong></p>
   <p>Per qualsiasi richiesta, puoi contattarci:</p>
   <p>WhatsApp: <strong>https://wa.me/393486380115</strong> <br/> Email: <strong>paolochiarella@snackulture.it</strong></p>
   </body>
