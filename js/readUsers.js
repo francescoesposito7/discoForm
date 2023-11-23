@@ -9,11 +9,13 @@ var firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+var firestore = firebase.firestore();
 
 const usersRef = firebase
   .firestore()
-  .collection("users");
+  .collection("users_12_2023");
 let tot = 0;
+let totSent = 0;
   usersRef
   .get()
   .then(querySnapshot=>{
@@ -26,13 +28,60 @@ let tot = 0;
                         <td>${data.name}</td>
                         <td>${data.surname}</td>
                         <td>${data.telephoneNo}</td>
-                  </tr>`;
+                        `;
+
+        if(!data.emailSent){ 
+          row += `<td><button id="send-mail-btn" type="button" class="btn btn-success" onclick="sendMail('${data.email}')">Invia Mail</button></td> </tr>`
+        } else {
+          totSent+=1;
+          row += `</tr>`
+        }
         let table = document.querySelector('#usersTable tbody');
         table.innerHTML += row
         document.getElementById("tot").innerHTML = tot;
+        document.getElementById("totSent").innerHTML = totSent;
     })
 })
 .catch(err=>{
     console.log(`Error: ${err}`)
 });
-  
+
+const db = firestore.collection("users_12_2023");
+const mail = firestore.collection("mail_12_2023");
+
+function sendMail(email) {
+  var message = `<html>
+    <body>
+    <h1>REMEMBER PARTY</h1>
+    <p><strong>2011-2023</strong></p>
+    <p>Ciao!</p>
+    <p>Ti confermiamo la registrazione all’evento!</p>
+    <p>Verrai inserita/o in una lista nominale all&rsquo;ingresso del locale.Ti baster&agrave; quindi dimostrare la tua identit&agrave; con un documento in corso di validit&agrave; e contribuire alla riuscita della serata con una quota di <strong>10&euro;</strong> da pagare in cassa.</p>
+    <p><strong>Orario: 23:30 - 05:00</strong></p>
+    <p>Rimani aggiornato, iscriviti al canale Telegram ufficiale: <strong>https://t.me/rememberparty</strong></p>
+    <p>Per qualsiasi richiesta, puoi contattarci:</p>
+    <p>WhatsApp: <strong>https://wa.me/393486380115</strong> <br/> Email: <strong>paolochiarella@snackulture.it</strong></p>
+    </body>
+    </html>`
+
+    db.where("email", "==", email).limit(1).get().then(query => {
+      const thing = query.docs[0];
+      let tmp = thing.data();
+      tmp.emailSent = true;
+      thing.ref.update(tmp);
+  });
+
+    mail
+    .add({
+      to: email,
+      message: {
+        subject: "Registrazione avvenuta con successo!",
+        text: "",
+        html: message
+      },
+    })
+    .then(() => {
+      location.reload();
+      console.log("Queued email for delivery!");
+    });
+}

@@ -12,19 +12,13 @@ firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
 
 //Variable to access database collection
-const db = firestore.collection("users");
-const mail = firestore.collection("mail");
+const db = firestore.collection("users_12_2023");
 
 const addUserBtnUI = document.getElementById("add-user-btn");
 addUserBtnUI.addEventListener("click", (e) => {
   //Prevent Default Form Submission Behavior
   e.preventDefault();
   var email_reg_exp = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
-  
-  const modal = document.querySelector(".modal");
-  const overlay = document.querySelector(".overlay");
-  const openModalBtn = document.querySelector(".btn-open");
-  const closeModalBtn = document.querySelector(".btn-close");
   
   //Get Form Values
   let firstName = document.getElementById("name").value;
@@ -64,59 +58,39 @@ addUserBtnUI.addEventListener("click", (e) => {
     document.modulo.telephoneNo.focus();
     return false;
   }
-
-  db
-  .doc()
-  .set({
-    name: firstName,
-    surname: lastName,
-    email: email,
-    birthDate: date,
-    telephoneNo: telephoneNo,
-  })
-  .then(() => { })
-  .catch((error) => {
-    console.log(error);
-  });
-
-  var message = `<html>
-  <body>
-  <h1>REMEMBER PARTY</h1>
-  <p><strong>2011-2022</strong></p>
-  <p>Verrai inserita/o in una lista nominale all&rsquo;ingresso del locale.Ti baster&agrave; quindi dimostrare la tua identit&agrave; con un documento in corso di validit&agrave; e contribuire alla riuscita della serata con una quota di <strong>10&euro;</strong> da pagare in cassa.</p>
-  <p><strong>Orario: 23:30 - 04:30</strong></p>
-  <p>Rimani aggiornato, iscriviti al canale Telegram ufficiale: <strong>https://t.me/rememberparty</strong></p>
-  <p>Per qualsiasi richiesta, puoi contattarci:</p>
-  <p>WhatsApp: <strong>https://wa.me/393486380115</strong> <br/> Email: <strong>paolochiarella@snackulture.it</strong></p>
-  </body>
-  </html>`
-
-  mail
-  .add({
-    to: email,
-    message: {
-      subject: "Registrazione avvenuta con successo!",
-      text: "",
-      html: message
-    },
-  })
-  .then(() => console.log("Queued email for delivery!"));
-
-  document.getElementById("registerForm").reset();
-  functionAlert();
+  let controlDate = new Date(date)
+  if(controlDate.getFullYear() <= 1998) {
+    db
+    .doc()
+    .set({
+      name: firstName,
+      surname: lastName,
+      email: email,
+      birthDate: date,
+      telephoneNo: telephoneNo,
+      emailSent: false,
+    })
+    .then(() => { })
+    .catch((error) => {
+      console.log(error);
+    });
+  
+    document.getElementById("registerForm").reset();
+    let msg = "Registrazione avvenuta con Successo. A breve riceverai una mail di conferma."
+    functionAlert(msg);
+  } else {
+    document.getElementById("registerForm").reset();
+    let msg = "Siamo Spiacenti! Registrazione non avvenuta. Occorre avere un\' età minima di 25 anni per accedere all\'evento."
+    functionAlert(msg);
+  }
 })
 
-function functionAlert(msg, myYes) {
+function functionAlert(msg,myYes) {
   var confirmBox = $("#confirm");
   confirmBox.find(".message").text(msg);
   confirmBox.find(".yes").unbind().click(function() {
-      confirmBox.hide();
+    confirmBox.hide();
   });
   confirmBox.find(".yes").click(myYes);
   confirmBox.show();
 }
-
-
-
-
-  
