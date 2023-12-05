@@ -31,7 +31,8 @@ let totSent = 0;
                         `;
 
         if(!data.emailSent){ 
-          row += `<td><button id="send-mail-btn" type="button" class="btn btn-success" onclick="sendMail('${data.email}')">Invia Mail</button></td> </tr>`
+          row += `<td><button id="send-mail-btn" type="button" class="btn btn-success" onclick="sendMail('${data.email}')">Invia Mail</button></td> 
+                  <td><button id="delete-usr-btn" type="button" class="btn btn-danger" onclick="deleteUser('${data.email}')">Elimina Invitato</button></td></tr>`
         } else {
           totSent+=1;
           row += `</tr>`
@@ -53,6 +54,7 @@ function sendMail(email) {
   var message = `<html>
     <body>
     <h1>REMEMBER PARTY</h1>
+    <p><strong>Venerdì 22 Dicembre</strong></p>
     <p><strong>2011-2023</strong></p>
     <p>Ciao!</p>
     <p>Ti confermiamo la registrazione all’evento!</p>
@@ -84,4 +86,22 @@ function sendMail(email) {
       location.reload();
       console.log("Queued email for delivery!");
     });
+}
+
+function deleteUser(email) {
+  var result = confirm("Sei Sicuro?");
+    if (result) {
+      db.where("email", "==", email).limit(1).get().then(query => {
+        const thing = query.docs[0];
+        console.log(thing.ref);
+        console.log(thing.ref.id);
+        db.doc(thing.ref.id).delete()
+        .then(() => {
+          location.reload();
+          console.log("Queued user deleted!");
+        })
+      });
+    }
+
+   
 }
