@@ -45,7 +45,7 @@ let totSent = 0;
 }).then(() => {
   window.scrollTo({
     top: localStorage.getItem('scrollPosition'),
-    behavior: "instant",
+    behavior: "smooth",
   });
   localStorage.clear()
 })
