@@ -42,6 +42,12 @@ let totSent = 0;
         document.getElementById("tot").innerHTML = tot;
         document.getElementById("totSent").innerHTML = totSent;
     })
+}).then(() => {
+  window.scrollTo({
+    top: localStorage.getItem('scrollPosition'),
+    behavior: "smooth",
+  });
+  localStorage.clear()
 })
 .catch(err=>{
     console.log(`Error: ${err}`)
@@ -83,6 +89,7 @@ function sendMail(email) {
       },
     })
     .then(() => {
+      localStorage.setItem('scrollPosition', window.scrollY)
       location.reload();
       console.log("Queued email for delivery!");
     });
@@ -96,6 +103,7 @@ function deleteUser(email) {
         console.log(thing.ref.id);
         db.doc(thing.ref.id).delete()
         .then(() => {
+          localStorage.setItem('scrollPosition', window.scrollY)
           location.reload();
           console.log("Queued user deleted!");
         })
