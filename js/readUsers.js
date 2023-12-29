@@ -91,9 +91,8 @@ function sendMail(email) {
 function deleteUser(email) {
   var result = confirm("Sei Sicuro?");
     if (result) {
-      db.where("email", "==", email).limit(1).get().then(query => {
+      db.where("email", "==", email).where("emailSent", "==", false).limit(1).get().then(query => {
         const thing = query.docs[0];
-        console.log(thing.ref);
         console.log(thing.ref.id);
         db.doc(thing.ref.id).delete()
         .then(() => {
